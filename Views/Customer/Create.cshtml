@@ -1,0 +1,164 @@
+﻿@model CLDV6212_GROUP_04.Models.Customer
+
+@{
+    ViewData["Title"] = "Create New Customer";
+}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="h3 text-primary mb-1">
+                        <i class="fas fa-user-plus me-2"></i>Create New Customer
+                    </h1>
+                    <p class="text-muted mb-0">Add a new customer to the system</p>
+                </div>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Back to List
+                </a>
+            </div>
+
+            <!-- Form Card -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-user-circle me-2"></i>Customer Information
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" id="customerForm">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <!-- Personal Information -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="FirstName" class="form-label fw-bold">First Name *</label>
+                                    <input asp-for="FirstName" class="form-control" placeholder="Enter first name" />
+                                    <span asp-validation-for="FirstName" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Surname" class="form-label fw-bold">Last Name *</label>
+                                    <input asp-for="Surname" class="form-control" placeholder="Enter last name" />
+                                    <span asp-validation-for="Surname" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Username" class="form-label fw-bold">Username *</label>
+                                    <input asp-for="Username" class="form-control" placeholder="Enter username" />
+                                    <span asp-validation-for="Username" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Email" class="form-label fw-bold">Email Address *</label>
+                                    <input asp-for="Email" type="email" class="form-control" placeholder="Enter email address" />
+                                    <span asp-validation-for="Email" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="form-group mb-4">
+                            <label asp-for="Address" class="form-label fw-bold">Shipping Address *</label>
+                            <textarea asp-for="Address" class="form-control" rows="3" placeholder="Enter complete shipping address"></textarea>
+                            <span asp-validation-for="Address" class="text-danger small"></span>
+                        </div>
+
+                        <!-- System Information (Readonly) -->
+                        <div class="card bg-light mb-4">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">
+                                    <i class="fas fa-info-circle me-2"></i>System Information
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group mb-2">
+                                            <label class="form-label fw-bold">Customer ID</label>
+                                            <input type="text" class="form-control" value="Auto-generated" readonly />
+                                            <small class="form-text text-muted">Will be generated automatically</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group mb-2">
+                                            <label class="form-label fw-bold">Partition Key</label>
+                                            <input type="text" class="form-control" value="Customer" readonly />
+                                            <small class="form-text text-muted">Fixed value for customer entities</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group mb-2">
+                                            <label class="form-label fw-bold">Timestamp</label>
+                                            <input type="text" class="form-control" value="Auto-generated" readonly />
+                                            <small class="form-text text-muted">Will be set to current time</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="form-group">
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-save me-2"></i>Create Customer
+                                </button>
+                                <a asp-action="Index" class="btn btn-outline-secondary">
+                                    <i class="fas fa-times me-2"></i>Cancel
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simple form submission handler without email validation
+            const form = document.getElementById('customerForm');
+
+            // You can add other client-side validations here if needed
+            // For now, we're keeping it simple without email validation
+        });
+    </script>
+}
+
+@section Styles {
+    <style>
+        .form-label {
+            font-weight: 500;
+        }
+
+        .form-control:focus {
+            border-color: #4e73df;
+            box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+        }
+
+        .card {
+            border: none;
+            border-radius: 0.5rem;
+        }
+
+        .bg-light {
+            background-color: #f8f9fa !important;
+        }
+    </style>
+}

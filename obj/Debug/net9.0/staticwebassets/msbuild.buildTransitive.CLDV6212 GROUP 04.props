@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\CLDV6212 GROUP 04.props" />
+</Project>
