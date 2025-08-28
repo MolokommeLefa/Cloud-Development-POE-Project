@@ -15,7 +15,7 @@ namespace CLDV6212_GROUP_04.Controllers
         private readonly TableServiceClient _tableServiceClient;
         private readonly TableClient _tableClient;
         private readonly BlobServiceClient _blobServiceClient;
-        private const string TableName = "Product";
+        private const string TableName = "Products"; // Fixed table name
         private const string ContainerName = "product-images";
 
         public ProductController(IConfiguration configuration)
@@ -31,13 +31,10 @@ namespace CLDV6212_GROUP_04.Controllers
         {
             try
             {
-                // Ensure table exists
                 await _tableServiceClient.CreateTableIfNotExistsAsync(TableName);
-
                 var products = await _tableClient.QueryAsync<Product>()
                     .Where(p => p.PartitionKey == "Product")
                     .ToListAsync();
-
                 return View(products);
             }
             catch (Exception ex)
@@ -56,7 +53,7 @@ namespace CLDV6212_GROUP_04.Controllers
         // POST: Product/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("productName,productDescription,Price,StockQuantity")] Product product, IFormFile productImage)
+        public async Task<IActionResult> Create([Bind("productName,productDescription,Price,StockQuantity,ImageUrl")] Product product, IFormFile productImage)
         {
             if (ModelState.IsValid)
             {
@@ -76,13 +73,10 @@ namespace CLDV6212_GROUP_04.Controllers
                     if (productImage != null && productImage.Length > 0)
                     {
                         var imageUrl = await UploadProductImage(productImage, product.RowKey);
-                        // You might want to store this URL in your Product model
-                        // Add a property like: public string ImageUrl { get; set; }
+                        product.productImage = imageUrl; // FIXED: Store the URL
                     }
 
-                    // Add product to table
                     await _tableClient.AddEntityAsync(product);
-
                     TempData["SuccessMessage"] = "Product created successfully!";
                     return RedirectToAction(nameof(Index));
                 }
@@ -91,17 +85,13 @@ namespace CLDV6212_GROUP_04.Controllers
                     ModelState.AddModelError("", $"Error creating product: {ex.Message}");
                 }
             }
-
             return View(product);
         }
 
         // GET: Product/Edit/{id}
         public async Task<IActionResult> Edit(string id)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                return NotFound();
-            }
+            if (string.IsNullOrEmpty(id)) return NotFound();
 
             try
             {
@@ -122,12 +112,9 @@ namespace CLDV6212_GROUP_04.Controllers
         // POST: Product/Edit/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("productName,productDescription,Price,StockQuantity,PartitionKey,RowKey,Timestamp,ETag")] Product product, IFormFile productImage)
+        public async Task<IActionResult> Edit(string id, [Bind("productName,productDescription,Price,StockQuantity,ImageUrl,PartitionKey,RowKey,Timestamp,ETag")] Product product, IFormFile productImage)
         {
-            if (id != product.RowKey)
-            {
-                return NotFound();
-            }
+            if (id != product.RowKey) return NotFound();
 
             if (ModelState.IsValid)
             {
@@ -137,11 +124,10 @@ namespace CLDV6212_GROUP_04.Controllers
                     if (productImage != null && productImage.Length > 0)
                     {
                         var imageUrl = await UploadProductImage(productImage, product.RowKey);
-                        // Store image URL if you have that property
+                        product.productImage = imageUrl; // FIXED: Store the URL
                     }
 
                     await _tableClient.UpdateEntityAsync(product, product.ETag);
-
                     TempData["SuccessMessage"] = "Product updated successfully!";
                     return RedirectToAction(nameof(Index));
                 }
@@ -150,17 +136,13 @@ namespace CLDV6212_GROUP_04.Controllers
                     ModelState.AddModelError("", $"Error updating product: {ex.Message}");
                 }
             }
-
             return View(product);
         }
 
         // GET: Product/Delete/{id}
         public async Task<IActionResult> Delete(string id)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                return NotFound();
-            }
+            if (string.IsNullOrEmpty(id)) return NotFound();
 
             try
             {
@@ -192,17 +174,13 @@ namespace CLDV6212_GROUP_04.Controllers
             {
                 TempData["ErrorMessage"] = $"Error deleting product: {ex.Message}";
             }
-
             return RedirectToAction(nameof(Index));
         }
 
         // GET: Product/Details/{id}
         public async Task<IActionResult> Details(string id)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                return NotFound();
-            }
+            if (string.IsNullOrEmpty(id)) return NotFound();
 
             try
             {
@@ -223,18 +201,30 @@ namespace CLDV6212_GROUP_04.Controllers
         // Helper method for image upload
         private async Task<string> UploadProductImage(IFormFile file, string productId)
         {
-            var containerClient = _blobServiceClient.GetBlobContainerClient(ContainerName);
-            await containerClient.CreateIfNotExistsAsync();
-
-            var fileName = $"{productId}_{Path.GetExtension(file.FileName)}";
-            var blobClient = containerClient.GetBlobClient(fileName);
-
-            using (var stream = file.OpenReadStream())
+            try
             {
-                await blobClient.UploadAsync(stream, true);
-            }
+                var containerClient = _blobServiceClient.GetBlobContainerClient(ContainerName);
+                await containerClient.CreateIfNotExistsAsync();
 
-            return blobClient.Uri.ToString();
+                // Generate unique filename
+                var fileExtension = Path.GetExtension(file.FileName);
+                var fileName = $"{productId}{fileExtension}";
+                var blobClient = containerClient.GetBlobClient(fileName);
+
+                // Upload the file
+                using (var stream = file.OpenReadStream())
+                {
+                    await blobClient.UploadAsync(stream, true);
+                }
+
+                return blobClient.Uri.ToString();
+            }
+            catch (Exception ex)
+            {
+                // Log error and return empty string
+                Console.WriteLine($"Error uploading image: {ex.Message}");
+                return string.Empty;
+            }
         }
     }
 }

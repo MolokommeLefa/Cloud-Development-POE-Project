@@ -1,29 +1,87 @@
-﻿@model IEnumerable<CLDV6212_GROUP_04.Models.FileUpload>
+﻿@model CLDV6212_GROUP_04.Models.FileUpload
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Upload Proof of Payment";
 }
 
-<h1>Index</h1>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">@ViewData["Title"]</h3>
+                </div>
+                <div class="card-body">
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            @TempData["ErrorMessage"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
+                    <form asp-action="Index" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        @Html.AntiForgeryToken()
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="OrderID" class="form-label fw-bold"></label>
+                                <select asp-for="OrderID" asp-items="@(ViewBag.OrderList as List<SelectListItem>)" class="form-select" required>
+                                    <option value="">-- Select Order --</option>
+                                </select>
+                                <span asp-validation-for="OrderID" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="CustomerName" class="form-label fw-bold"></label>
+                                <select asp-for="CustomerName" asp-items="@(ViewBag.CustomerList as List<SelectListItem>)" class="form-select" required>
+                                    <option value="">-- Select Customer --</option>
+                                </select>
+                                <span asp-validation-for="CustomerName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ProofOfPayment" class="form-label fw-bold"></label>
+                            <input asp-for="ProofOfPayment" class="form-control" type="file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" required />
+                            <div class="form-text">Accepted formats: PDF, JPG, PNG, DOC, DOCX. Maximum file size: 5MB</div>
+                            <span asp-validation-for="ProofOfPayment" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary me-md-2">
+                                <i class="fas fa-upload me-2"></i>Upload File
+                            </button>
+                            <a asp-action="Uploads" class="btn btn-outline-secondary">
+                                <i class="fas fa-list me-2"></i>View Uploads
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        // Client-side validation
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
 }
-    </tbody>
-</table>

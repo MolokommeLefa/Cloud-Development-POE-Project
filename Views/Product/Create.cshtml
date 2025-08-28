@@ -1,28 +1,210 @@
 ﻿@model CLDV6212_GROUP_04.Models.Product
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add New Product";
 }
 
-<h1>Create</h1>
-
-<h4>Product</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="h3 text-primary mb-1">
+                        <i class="fas fa-box me-2"></i>Add New Product
+                    </h1>
+                    <p class="text-muted mb-0">Add a new product to your inventory</p>
+                </div>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Back to Products
+                </a>
             </div>
-        </form>
+
+            <!-- Form Card -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-info-circle me-2"></i>Product Details
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" id="productForm" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <!-- Product Information -->
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group mb-3">
+                                    <label asp-for="productName" class="form-label fw-bold">Product Name *</label>
+                                    <input asp-for="productName" class="form-control" placeholder="Enter product name" />
+                                    <span asp-validation-for="productName" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Price" class="form-label fw-bold">Price (R) *</label>
+                                    <input asp-for="Price" type="number" step="0.01" min="0" class="form-control" placeholder="0.00" />
+                                    <span asp-validation-for="Price" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group mb-3">
+                            <label asp-for="productDescription" class="form-label fw-bold">Description</label>
+                            <textarea asp-for="productDescription" class="form-control" rows="3" placeholder="Enter product description"></textarea>
+                            <span asp-validation-for="productDescription" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Stock and Image -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="StockQuantity" class="form-label fw-bold">Stock Quantity *</label>
+                                    <input asp-for="StockQuantity" type="number" min="0" class="form-control" placeholder="Enter quantity" />
+                                    <span asp-validation-for="StockQuantity" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            
+
+                        <!-- Alternative: File Upload (if you want both options) -->
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="productImage" class="form-label fw-bold">Or Upload Product Image</label>
+                                    <input type="file" name="productImage" class="form-control" accept="image/*" />
+                                    <small class="form-text text-muted">Choose an image file (JPG, PNG, etc.) - will override Image URL</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- System Information (Readonly) -->
+                        <div class="card bg-light mb-4">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">
+                                    <i class="fas fa-database me-2"></i>System Information
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group mb-2">
+                                            <label class="form-label fw-bold">Product ID</label>
+                                            <input type="text" class="form-control" value="Auto-generated (GUID)" readonly />
+                                            <small class="form-text text-muted">Unique product identifier</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group mb-2">
+                                            <label class="form-label fw-bold">Partition Key</label>
+                                            <input type="text" class="form-control" value="Product (Fixed)" readonly />
+                                            <small class="form-text text-muted">Azure Table partition</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group mb-2">
+                                            <label class="form-label fw-bold">ETag</label>
+                                            <input type="text" class="form-control" value="Auto-generated" readonly />
+                                            <small class="form-text text-muted">Concurrency control</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-2">
+                                            <label class="form-label fw-bold">Timestamp</label>
+                                            <input type="text" class="form-control" value="Auto-generated (Current time)" readonly />
+                                            <small class="form-text text-muted">Record creation time</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="form-group">
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-save me-2"></i>Create Product
+                                </button>
+                                <a asp-action="Index" class="btn btn-outline-secondary">
+                                    <i class="fas fa-times me-2"></i>Cancel
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('productForm');
+
+            // Price input formatting
+            const priceInput = document.getElementById('Price');
+            if (priceInput) {
+                priceInput.addEventListener('blur', function() {
+                    if (this.value) {
+                        this.value = parseFloat(this.value).toFixed(2);
+                    }
+                });
+            }
+
+            // Stock quantity validation
+            const stockInput = document.getElementById('StockQuantity');
+            if (stockInput) {
+                stockInput.addEventListener('input', function() {
+                    if (this.value < 0) {
+                        this.value = 0;
+                    }
+                });
+            }
+        });
+    </script>
+}
+
+@section Styles {
+    <style>
+        .form-label {
+            font-weight: 500;
+        }
+
+        .form-control:focus {
+            border-color: #4e73df;
+            box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+        }
+
+        .card {
+            border: none;
+            border-radius: 0.5rem;
+        }
+
+        .bg-light {
+            background-color: #f8f9fa !important;
+        }
+
+        input[readonly] {
+            background-color: #f8f9fa;
+            cursor: not-allowed;
+        }
+
+        /* Number input styling */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
 }

@@ -3,36 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\views\\customer\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:views\\customer\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\views\\order\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:views\\order\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\views\\customer\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:views\\customer\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\views\\upload\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:views\\upload\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\models\\fileuploadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:models\\fileuploadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\views\\order\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:views\\order\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\service\\azurestorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,40 +55,12 @@
       "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:service\\iazurestorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\models\\fileuploadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:models\\fileuploadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\views\\upload\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:views\\upload\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\views\\order\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:views\\order\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\views\\order\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:views\\order\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\views\\product\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:views\\product\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\views\\product\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:views\\product\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|c:\\users\\lab_services_student\\desktop\\consoleappterm2\\cldv6212 group 04\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DB5BDB4-42E3-4EA4-BCBF-949CB0D0F312}|CLDV6212 GROUP 04.csproj|solutionrelative:controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -86,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -94,33 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CustomerController.cs",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\CustomerController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CustomerController.cs",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\CustomerController.cs",
-              "RelativeToolTip": "Controllers\\CustomerController.cs",
-              "ViewState": "AgIAAGYAAAAAnJmZmZnhv70AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T11:32:24.993Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Customer\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Customer\\Create.cshtml",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Customer\\Create.cshtml",
-              "RelativeToolTip": "Views\\Customer\\Create.cshtml",
-              "ViewState": "AgIAAIAAAAAQAAAAAAAqwIsAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-19T20:45:56.91Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
               "Title": "Customer.cs",
               "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Models\\Customer.cs",
               "RelativeDocumentMoniker": "Models\\Customer.cs",
@@ -128,61 +86,138 @@
               "RelativeToolTip": "Models\\Customer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T12:45:15.836Z",
+              "WhenOpened": "2025-08-04T12:45:15.836Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Order\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Order\\Create.cshtml",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Order\\Create.cshtml",
+              "RelativeToolTip": "Views\\Order\\Create.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAACEPTgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-19T20:56:25.585Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Product.cs",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Models\\Product.cs",
-              "RelativeDocumentMoniker": "Models\\Product.cs",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Models\\Product.cs",
-              "RelativeToolTip": "Models\\Product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAA8AAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "FileUploadModel.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Models\\FileUploadModel.cs",
+              "RelativeDocumentMoniker": "Models\\FileUploadModel.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Models\\FileUploadModel.cs",
+              "RelativeToolTip": "Models\\FileUploadModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T11:26:26.556Z"
+              "WhenOpened": "2025-08-05T11:29:22.724Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Customer\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Customer\\Index.cshtml",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Customer\\Index.cshtml",
-              "RelativeToolTip": "Views\\Customer\\Index.cshtml",
-              "ViewState": "AgIAAA0AAACANTMzMzMrwIgAAAAMAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Upload\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Upload\\Index.cshtml",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Upload\\Index.cshtml",
+              "RelativeToolTip": "Views\\Upload\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAMzMzMzMrwAQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-19T20:42:09.061Z",
+              "WhenOpened": "2025-08-19T20:58:49.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "Models\\Order.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Models\\Order.cs",
+              "RelativeToolTip": "Models\\Order.cs",
+              "ViewState": "AgIAACEAAABA+/////8bwCAAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-05T11:26:51.993Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "Controllers\\ProductController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAABYPRIAAAA8AAAAAAAAAA==",
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Models\\Product.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Models\\Product.cs",
+              "RelativeToolTip": "Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-25T20:51:26.002Z"
+              "WhenOpened": "2025-08-05T11:26:26.556Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAcAAACAMjMzMzMrwBoAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABQAAAAAJDMzMzPjvysAAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-26T11:48:08.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "Controllers\\OrderController.cs",
+              "ViewState": "AgIAAF4AAABoZmZmZmYwwHEAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-25T13:00:01.711Z"
+              "WhenOpened": "2025-08-05T11:33:33.094Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UploadController.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\UploadController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UploadController.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\UploadController.cs",
+              "RelativeToolTip": "Controllers\\UploadController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-05T11:34:17.484Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Order\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Order\\Index.cshtml",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Order\\Index.cshtml",
+              "RelativeToolTip": "Views\\Order\\Index.cshtml",
+              "ViewState": "AgIAACMAAABAZmZmZmYswFEAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-27T13:43:18.795Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CustomerController.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\CustomerController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CustomerController.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\CustomerController.cs",
+              "RelativeToolTip": "Controllers\\CustomerController.cs",
+              "ViewState": "AgIAAGYAAAAAnJmZmZnhv70AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-05T11:32:24.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "AzureStorageService.cs",
               "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Service\\AzureStorageService.cs",
               "RelativeDocumentMoniker": "Service\\AzureStorageService.cs",
@@ -194,19 +229,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABEAAAAAJDMzMzPjvyUAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-26T11:48:08.243Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "IAzureStorageService.cs",
               "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Service\\IAzureStorageService.cs",
               "RelativeDocumentMoniker": "Service\\IAzureStorageService.cs",
@@ -218,43 +241,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Models\\Order.cs",
-              "RelativeDocumentMoniker": "Models\\Order.cs",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Models\\Order.cs",
-              "RelativeToolTip": "Models\\Order.cs",
-              "ViewState": "AgIAAAkAAAAgzMzMzMw5wBoAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T11:26:51.993Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "FileUploadModel.cs",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Models\\FileUploadModel.cs",
-              "RelativeDocumentMoniker": "Models\\FileUploadModel.cs",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Models\\FileUploadModel.cs",
-              "RelativeToolTip": "Models\\FileUploadModel.cs",
-              "ViewState": "AgIAAAAAAAAPAAAAAIBJwA4AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T11:29:22.724Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Product\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Product\\Create.cshtml",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Product\\Create.cshtml",
-              "RelativeToolTip": "Views\\Product\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-19T20:52:40.105Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 14,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Product\\Edit.cshtml",
               "RelativeDocumentMoniker": "Views\\Product\\Edit.cshtml",
@@ -263,30 +250,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-19T20:53:37.61Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Order\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Order\\Create.cshtml",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Order\\Create.cshtml",
-              "RelativeToolTip": "Views\\Order\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-19T20:56:25.585Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Upload\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Upload\\Index.cshtml",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Views\\Upload\\Index.cshtml",
-              "RelativeToolTip": "Views\\Upload\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAMzMzMzMLwBAAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-19T20:58:49.668Z"
             },
             {
               "$type": "Document",
@@ -299,30 +262,6 @@
               "ViewState": "AgIAAAcAAAAAMTMzMzMLwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-19T20:57:16.837Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "UploadController.cs",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\UploadController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UploadController.cs",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\UploadController.cs",
-              "RelativeToolTip": "Controllers\\UploadController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T11:34:17.484Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "Controllers\\OrderController.cs",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "Controllers\\OrderController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T11:33:33.094Z"
             }
           ]
         }

@@ -20,14 +20,17 @@ namespace CLDV6212_GROUP_04.Models
         [Display(Name = "Product Name")]
         public string productName { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "Product Description is required")]
         [Display(Description = "Product Description")]
         public string productDescription { get; set; } = string.Empty;
 
+
+        [Required(ErrorMessage = "Product Price is required")]
         [Display(Name = "Product Price")]
         public double Price { get; set; }
 
         [Display(Name = "Image URL")]
-        public string ImageUrl { get; set; } = string.Empty;
+        public string productImage { get; set; } = string.Empty;
 
 
         // Default constructor for TableEntity
