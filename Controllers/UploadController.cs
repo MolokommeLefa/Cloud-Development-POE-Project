@@ -6,31 +6,42 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System.Threading.Tasks;
 using CLDV6212_GROUP_04.Models;
+using CLDV6212_GROUP_04.Service;
 using System.Collections.Generic;
 using System;
 using Azure.Storage.Files.Shares;
 using Azure.Storage.Files.Shares.Models;
 using Azure;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace CLDV6212_GROUP_04.Controllers
 {
     public class FileUploadController : Controller
     {
         private readonly IWebHostEnvironment _hostingEnvironment;
+        private readonly IAzureStorageService _azureStorageService;
         private readonly TableServiceClient _tableServiceClient;
         private readonly ShareClient _fileShareClient;
+        private readonly ILogger<FileUploadController> _logger;
+        private readonly IMemoryCache _cache;
 
         public FileUploadController(IWebHostEnvironment hostingEnvironment,
+                                  IAzureStorageService azureStorageService,
                                   TableServiceClient tableServiceClient,
-                                  ShareClient fileShareClient)
+                                  ShareClient fileShareClient,
+                                  ILogger<FileUploadController> logger,
+                                  IMemoryCache cache)
         {
             _hostingEnvironment = hostingEnvironment;
+            _azureStorageService = azureStorageService;
             _tableServiceClient = tableServiceClient;
             _fileShareClient = fileShareClient;
+            _logger = logger;
+            _cache = cache;
         }
 
         // GET: FileUpload
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var model = new FileUpload
             {
@@ -38,8 +49,8 @@ namespace CLDV6212_GROUP_04.Controllers
                 CustomerName = "slya_05"
             };
 
-            ViewBag.OrderList = GetOrderList();
-            ViewBag.CustomerList = GetCustomerList();
+            ViewBag.OrderList = await GetOrderListAsync();
+            ViewBag.CustomerList = await GetCustomerListAsync();
 
             return View(model);
         }
@@ -62,8 +73,8 @@ namespace CLDV6212_GROUP_04.Controllers
                         if (!allowedExtensions.Contains(fileExtension))
                         {
                             ModelState.AddModelError("ProofOfPayment", "Only PDF, JPG, PNG, and DOC files are allowed.");
-                            ViewBag.OrderList = GetOrderList();
-                            ViewBag.CustomerList = GetCustomerList();
+                            ViewBag.OrderList = await GetOrderListAsync();
+                            ViewBag.CustomerList = await GetCustomerListAsync();
                             return View(model);
                         }
 
@@ -71,8 +82,8 @@ namespace CLDV6212_GROUP_04.Controllers
                         if (model.ProofOfPayment.Length > 5 * 1024 * 1024)
                         {
                             ModelState.AddModelError("ProofOfPayment", "File size cannot exceed 5MB.");
-                            ViewBag.OrderList = GetOrderList();
-                            ViewBag.CustomerList = GetCustomerList();
+                            ViewBag.OrderList = await GetOrderListAsync();
+                            ViewBag.CustomerList = await GetCustomerListAsync();
                             return View(model);
                         }
 
@@ -96,8 +107,8 @@ namespace CLDV6212_GROUP_04.Controllers
                 }
             }
 
-            ViewBag.OrderList = GetOrderList();
-            ViewBag.CustomerList = GetCustomerList();
+            ViewBag.OrderList = await GetOrderListAsync();
+            ViewBag.CustomerList = await GetCustomerListAsync();
             return View(model);
         }
 
@@ -105,22 +116,26 @@ namespace CLDV6212_GROUP_04.Controllers
         {
             try
             {
-                // Create the share if it doesn't exist
-                await _fileShareClient.CreateIfNotExistsAsync();
+                // Create the share if it doesn't exist with retry
+                await _fileShareClient.CreateIfNotExistsAsync()
+                    .WithRetryAsync();
 
                 // Create directory for proof of payment files
                 var directoryClient = _fileShareClient.GetDirectoryClient("proof-of-payment");
-                await directoryClient.CreateIfNotExistsAsync();
+                await directoryClient.CreateIfNotExistsAsync()
+                    .WithRetryAsync();
 
                 // Generate unique filename
                 var uniqueFileName = $"{Guid.NewGuid()}_{file.FileName}";
                 var fileClient = directoryClient.GetFileClient(uniqueFileName);
 
-                // Upload the file
+                // Upload the file with retry
                 using (var stream = file.OpenReadStream())
                 {
-                    await fileClient.CreateAsync(stream.Length);
-                    await fileClient.UploadRangeAsync(new HttpRange(0, stream.Length), stream);
+                    await fileClient.CreateAsync(stream.Length)
+                        .WithRetryAsync();
+                    await fileClient.UploadRangeAsync(new HttpRange(0, stream.Length), stream)
+                        .WithRetryAsync();
                 }
 
                 // Get the file URL (you might want to use a SAS token for secure access)
@@ -130,6 +145,7 @@ namespace CLDV6212_GROUP_04.Controllers
             }
             catch (RequestFailedException ex)
             {
+                _logger.LogError(ex, "Azure File Storage error during upload");
                 throw new Exception($"Azure File Storage error: {ex.Message}", ex);
             }
         }
@@ -138,8 +154,12 @@ namespace CLDV6212_GROUP_04.Controllers
         {
             try
             {
+                if (model.ProofOfPayment == null)
+                    throw new ArgumentException("Proof of payment file is required");
+
                 var tableClient = _tableServiceClient.GetTableClient("FileUploads");
-                await tableClient.CreateIfNotExistsAsync();
+                await tableClient.CreateIfNotExistsAsync()
+                    .WithRetryAsync();
 
                 var entity = new TableEntity("Upload", Guid.NewGuid().ToString())
                 {
@@ -154,7 +174,8 @@ namespace CLDV6212_GROUP_04.Controllers
                     ["StorageType"] = "AzureFiles"
                 };
 
-                await tableClient.AddEntityAsync(entity);
+                await tableClient.AddEntityAsync(entity)
+                    .WithRetryAsync();
             }
             catch (Exception ex)
             {
@@ -307,40 +328,114 @@ namespace CLDV6212_GROUP_04.Controllers
             }
         }
 
-        private List<SelectListItem> GetOrderList()
+        private async Task<List<SelectListItem>> GetOrderListAsync()
         {
-            return new List<SelectListItem>
+            const string ordersCacheKey = "orders_for_upload";
+            
+            var result = await _cache.GetOrCreateAsync<List<SelectListItem>>(ordersCacheKey, async entry =>
             {
-                new SelectListItem { Value = "ORD-20240101-0001", Text = "ORD-20240101-0001" },
-                new SelectListItem { Value = "ORD-20240102-0002", Text = "ORD-20240102-0002" },
-                new SelectListItem { Value = "ORD-20240103-0003", Text = "ORD-20240103-0003" },
-                new SelectListItem { Value = "ORD-20240104-0004", Text = "ORD-20240104-0004" }
-            };
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5); // Cache for 5 minutes
+                
+                try
+                {
+                    var orderTableClient = _tableServiceClient.GetTableClient("Orders");
+                    var orders = new List<SelectListItem>();
+
+                    await foreach (var order in orderTableClient.QueryAsync<TableEntity>(filter: "PartitionKey eq 'Order'"))
+                    {
+                        var orderId = order.GetString("RowKey");
+                        var customerName = order.GetString("CustomerName") ?? "Unknown Customer";
+                        orders.Add(new SelectListItem 
+                        { 
+                            Value = orderId, 
+                            Text = $"{orderId} - {customerName}"
+                        });
+                    }
+
+                    // If no orders found, provide a fallback
+                    if (!orders.Any())
+                    {
+                        orders.Add(new SelectListItem { Value = "No orders available", Text = "No orders available" });
+                    }
+
+                    return orders;
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Error retrieving orders for dropdown");
+                    return new List<SelectListItem>
+                    {
+                        new SelectListItem { Value = "Error loading orders", Text = "Error loading orders" }
+                    };
+                }
+            });
+
+            return result ?? new List<SelectListItem>();
         }
 
-        private List<SelectListItem> GetCustomerList()
+        private async Task<List<SelectListItem>> GetCustomerListAsync()
         {
-            return new List<SelectListItem>
+            const string customersCacheKey = "customers_for_upload";
+            
+            var result = await _cache.GetOrCreateAsync<List<SelectListItem>>(customersCacheKey, async entry =>
             {
-                new SelectListItem { Value = "slya_05", Text = "slya_05" },
-                new SelectListItem { Value = "john_doe", Text = "John Doe" },
-                new SelectListItem { Value = "jane_smith", Text = "Jane Smith" },
-                new SelectListItem { Value = "bob_wilson", Text = "Bob Wilson" }
-            };
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10); // Cache for 10 minutes
+                
+                try
+                {
+                    var customerTableClient = _tableServiceClient.GetTableClient("Customers");
+                    var customers = new List<SelectListItem>();
+
+                    await foreach (var customer in customerTableClient.QueryAsync<TableEntity>(filter: "PartitionKey eq 'Customer'"))
+                    {
+                        var customerId = customer.GetString("RowKey");
+                        var username = customer.GetString("Username") ?? "Unknown User";
+                        var firstName = customer.GetString("FirstName") ?? "";
+                        var surname = customer.GetString("Surname") ?? "";
+                        var displayName = !string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(surname) 
+                            ? $"{firstName} {surname} ({username})" 
+                            : username;
+                        
+                        customers.Add(new SelectListItem 
+                        { 
+                            Value = username, 
+                            Text = displayName
+                        });
+                    }
+
+                    // If no customers found, provide a fallback
+                    if (!customers.Any())
+                    {
+                        customers.Add(new SelectListItem { Value = "slya_05", Text = "slya_05 (Default)" });
+                    }
+
+                    return customers;
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Error retrieving customers for dropdown");
+                    return new List<SelectListItem>
+                    {
+                        new SelectListItem { Value = "slya_05", Text = "slya_05 (Default)" }
+                    };
+                }
+            });
+
+            return result ?? new List<SelectListItem>();
         }
     }
 
     // ViewModel for displaying uploads
     public class UploadViewModel
     {
-        public string OrderID { get; set; }
-        public string CustomerName { get; set; }
-        public string FileName { get; set; }
-        public string OriginalFileName { get; set; }
+        public string OrderID { get; set; } = string.Empty;
+        public string CustomerName { get; set; } = string.Empty;
+        public string FileName { get; set; } = string.Empty;
+        public string OriginalFileName { get; set; } = string.Empty;
         public long FileSize { get; set; }
         public DateTime UploadDate { get; set; }
-        public string FileUrl { get; set; }
-        public string PartitionKey { get; set; }
-        public string RowKey { get; set; }
+        public string FileUrl { get; set; } = string.Empty;
+        public string PartitionKey { get; set; } = string.Empty;
+        public string RowKey { get; set; } = string.Empty;
     }
 }

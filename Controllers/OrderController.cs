@@ -5,26 +5,37 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Azure;
+using CLDV6212_GROUP_04.Service;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace CLDV6212_GROUP_04.Controllers
 {
     public class OrderController : Controller
     {
+        private readonly IAzureStorageService _azureStorageService;
         private readonly TableServiceClient _tableServiceClient;
         private readonly TableClient _orderTableClient;
         private readonly TableClient _customerTableClient;
         private readonly TableClient _productTableClient;
+        private readonly ILogger<OrderController> _logger;
+        private readonly IMemoryCache _cache;
         private const string OrderTableName = "Orders";
         private const string CustomerTableName = "Customers";
         private const string ProductTableName = "Products";
 
-        public OrderController(IConfiguration configuration)
+        public OrderController(
+            IAzureStorageService azureStorageService,
+            TableServiceClient tableServiceClient,
+            ILogger<OrderController> logger,
+            IMemoryCache cache)
         {
-            var connectionString = configuration.GetConnectionString("AzureStorageConnection");
-            _tableServiceClient = new TableServiceClient(connectionString);
-            _orderTableClient = new TableClient(connectionString, OrderTableName);
-            _customerTableClient = new TableClient(connectionString, CustomerTableName);
-            _productTableClient = new TableClient(connectionString, ProductTableName);
+            _azureStorageService = azureStorageService;
+            _tableServiceClient = tableServiceClient;
+            _logger = logger;
+            _cache = cache;
+            _orderTableClient = _tableServiceClient.GetTableClient(OrderTableName);
+            _customerTableClient = _tableServiceClient.GetTableClient(CustomerTableName);
+            _productTableClient = _tableServiceClient.GetTableClient(ProductTableName);
         }
 
         // GET: Order
@@ -54,25 +65,25 @@ namespace CLDV6212_GROUP_04.Controllers
         }
 
         // POST: Order/Create
-        // POST: Order/Create
-        // POST: Order/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CustomerId,ProductId,Quantity,OrderStatus")] Order order)
         {
             if (ModelState.IsValid)
             {
+                Customer? customer = null;
+                Product? product = null;
+                Product? originalProduct = null;
+
                 try
                 {
                     await _tableServiceClient.CreateTableIfNotExistsAsync(OrderTableName);
 
-                    // Get customer and product details with proper error handling
-                    Customer customer;
-                    Product product;
-
+                    // Get customer and product details with proper error handling and retry policies
                     try
                     {
-                        var customerResponse = await _customerTableClient.GetEntityAsync<Customer>("Customer", order.CustomerId);
+                        var customerResponse = await _customerTableClient.GetEntityAsync<Customer>("Customer", order.CustomerId)
+                            .WithRetryAsync();
                         customer = customerResponse.Value;
                     }
                     catch (RequestFailedException ex) when (ex.Status == 404)
@@ -84,8 +95,22 @@ namespace CLDV6212_GROUP_04.Controllers
 
                     try
                     {
-                        var productResponse = await _productTableClient.GetEntityAsync<Product>("Product", order.ProductId);
+                        var productResponse = await _productTableClient.GetEntityAsync<Product>("Product", order.ProductId)
+                            .WithRetryAsync();
                         product = productResponse.Value;
+                        // Keep original product for rollback
+                        originalProduct = new Product
+                        {
+                            PartitionKey = product.PartitionKey,
+                            RowKey = product.RowKey,
+                            ETag = product.ETag,
+                            StockQuantity = product.StockQuantity,
+                            Price = product.Price,
+                            productName = product.productName,
+                            productDescription = product.productDescription,
+                            productImage = product.productImage,
+                            Timestamp = product.Timestamp
+                        };
                     }
                     catch (RequestFailedException ex) when (ex.Status == 404)
                     {
@@ -111,27 +136,69 @@ namespace CLDV6212_GROUP_04.Controllers
                     // Set calculated fields
                     order.OrderDate = DateTime.UtcNow;
                     order.UnitPrice = (decimal)product.Price;
-                    
                     order.ProductName = product.productName;
                     order.Username = customer.Username;
                     order.CustomerName = $"{customer.FirstName} {customer.Surname}";
 
-                    // Update product stock
+                    // Update product stock (this is the risky operation)
                     product.StockQuantity -= order.Quantity;
-                    await _productTableClient.UpdateEntityAsync(product, product.ETag);
+                    
+                    try
+                    {
+                        // Update stock first with retry policy
+                        await _productTableClient.UpdateEntityAsync(product, product.ETag)
+                            .WithRetryAsync();
+                        
+                        // Invalidate products cache since stock changed
+                        _cache.Remove("products_dropdown");
+                        
+                        // Then add order with retry policy
+                        await _orderTableClient.AddEntityAsync(order)
+                            .WithRetryAsync();
 
-                    // Add order
-                    await _orderTableClient.AddEntityAsync(order);
+                        // Send notification message to queue for successful order
+                        try
+                        {
+                            await _azureStorageService.SendMessageAsync("order-notifications", 
+                                $"Order {order.OrderId} created for customer {order.CustomerName}");
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogWarning(ex, "Failed to send order notification for order {OrderId}", order.OrderId);
+                            // Don't fail the whole transaction for notification issues
+                        }
 
-                    TempData["SuccessMessage"] = "Order created successfully!";
-                    return RedirectToAction(nameof(Index));
+                        _logger.LogInformation("Order {OrderId} created successfully for customer {CustomerId}", 
+                            order.OrderId, order.CustomerId);
+                        
+                        TempData["SuccessMessage"] = "Order created successfully!";
+                        return RedirectToAction(nameof(Index));
+                    }
+                    catch (Exception orderException)
+                    {
+                        // Rollback stock update if order creation failed
+                        try
+                        {
+                            if (originalProduct != null)
+                            {
+                                await _productTableClient.UpdateEntityAsync(originalProduct, ETag.All)
+                                    .WithRetryAsync();
+                                _logger.LogInformation("Successfully rolled back stock for product {ProductId}", order.ProductId);
+                            }
+                        }
+                        catch (Exception rollbackException)
+                        {
+                            _logger.LogError(rollbackException, "Failed to rollback stock for product {ProductId} after order creation failure", order.ProductId);
+                        }
+
+                        _logger.LogError(orderException, "Failed to create order for customer {CustomerId}", order.CustomerId);
+                        throw; // Re-throw the original exception
+                    }
                 }
                 catch (Exception ex)
                 {
                     // Detailed error logging
-                    Console.WriteLine($"ERROR: {ex.Message}");
-                    Console.WriteLine($"StackTrace: {ex.StackTrace}");
-
+                    _logger.LogError(ex, "Error creating order for customer {CustomerId}: {Message}", order.CustomerId, ex.Message);
                     ModelState.AddModelError("", $"Error creating order: {ex.Message}");
                 }
             }
@@ -236,16 +303,29 @@ namespace CLDV6212_GROUP_04.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // Helper method to populate dropdowns
+        // Helper method to populate dropdowns with caching
         private async Task PopulateViewData()
         {
-            var customers = await _customerTableClient.QueryAsync<Customer>()
-                .Where(c => c.PartitionKey == "Customer")
-                .ToListAsync();
+            const string customersCacheKey = "customers_dropdown";
+            const string productsCacheKey = "products_dropdown";
 
-            var products = await _productTableClient.QueryAsync<Product>()
-                .Where(p => p.PartitionKey == "Product" && p.StockQuantity > 0)
-                .ToListAsync();
+            // Get customers with caching
+            var customers = await _cache.GetOrCreateAsync<List<Customer>>(customersCacheKey, async entry =>
+            {
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10); // Cache for 10 minutes
+                return await _customerTableClient.QueryAsync<Customer>()
+                    .Where(c => c.PartitionKey == "Customer")
+                    .ToListAsync();
+            });
+
+            // Get products with caching
+            var products = await _cache.GetOrCreateAsync<List<Product>>(productsCacheKey, async entry =>
+            {
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5); // Cache for 5 minutes (products change more frequently)
+                return await _productTableClient.QueryAsync<Product>()
+                    .Where(p => p.PartitionKey == "Product" && p.StockQuantity > 0)
+                    .ToListAsync();
+            });
 
             ViewBag.Customers = new SelectList(customers, "RowKey", "Username");
             ViewBag.Products = new SelectList(products, "RowKey", "productName");

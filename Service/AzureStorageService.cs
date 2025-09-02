@@ -20,7 +20,7 @@ namespace ABCRetailers.Services
             IConfiguration configuration,
             ILogger<AzureStorageService> logger)
         {
-            string connectionString = configuration.GetConnectionString("AzureStorage")
+            string connectionString = configuration.GetConnectionString("AzureStorageConnection")
                 ?? throw new InvalidOperationException("Azure Storage connection string not found");
 
             _tableServiceClient = new TableServiceClient(connectionString);
