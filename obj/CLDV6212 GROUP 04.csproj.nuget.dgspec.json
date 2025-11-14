@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\CLDV6212 GROUP 04.csproj": {}
+    "C:\\Users\\lab_services_student\\Desktop\\Cloud-Development-POE-Project-main (1)\\Cloud-Development-POE-Project-main\\CLDV6212 GROUP 04.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\CLDV6212 GROUP 04.csproj": {
+    "C:\\Users\\lab_services_student\\Desktop\\Cloud-Development-POE-Project-main (1)\\Cloud-Development-POE-Project-main\\CLDV6212 GROUP 04.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\CLDV6212 GROUP 04.csproj",
+        "projectUniqueName": "C:\\Users\\lab_services_student\\Desktop\\Cloud-Development-POE-Project-main (1)\\Cloud-Development-POE-Project-main\\CLDV6212 GROUP 04.csproj",
         "projectName": "CLDV6212 GROUP 04",
-        "projectPath": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\CLDV6212 GROUP 04.csproj",
+        "projectPath": "C:\\Users\\lab_services_student\\Desktop\\Cloud-Development-POE-Project-main (1)\\Cloud-Development-POE-Project-main\\CLDV6212 GROUP 04.csproj",
         "packagesPath": "C:\\Users\\lab_services_student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\obj\\",
+        "outputPath": "C:\\Users\\lab_services_student\\Desktop\\Cloud-Development-POE-Project-main (1)\\Cloud-Development-POE-Project-main\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -98,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

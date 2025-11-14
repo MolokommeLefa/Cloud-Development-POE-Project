@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tEHeEV8D65Y=",
+  "dgSpecHash": "lxwn6qltmQA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\lab_services_student\\Desktop\\ConsoleAppterm2\\CLDV6212 GROUP 04\\CLDV6212 GROUP 04.csproj",
+  "projectFilePath": "C:\\Users\\lab_services_student\\Desktop\\Cloud-Development-POE-Project-main (1)\\Cloud-Development-POE-Project-main\\CLDV6212 GROUP 04.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lab_services_student\\.nuget\\packages\\azure.core\\1.44.1\\azure.core.1.44.1.nupkg.sha512",
     "C:\\Users\\lab_services_student\\.nuget\\packages\\azure.data.tables\\12.11.0\\azure.data.tables.12.11.0.nupkg.sha512",
